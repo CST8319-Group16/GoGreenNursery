@@ -2,70 +2,68 @@ DROP DATABASE IF EXISTS go_green;
 DROP USER IF EXISTS 'go_green_user'@'%';
 
 CREATE DATABASE IF NOT EXISTS go_green;
-CREATE USER 'go_green_user'@'%' IDENTIFIED BY 'go_green_password';
-GRANT ALL PRIVILEGES ON go_green.* TO 'go_green_user'@'%';
+CREATE USER 'group16'@'%' IDENTIFIED BY 'group16';
+GRANT ALL PRIVILEGES ON go_green.* TO 'group16'@'%';
 FLUSH PRIVILEGES;
 
 USE go_green;
 
 CREATE TABLE User (
-                      UserID int AUTO_INCREMENT PRIMARY KEY,
-                      Username varchar(255),
-                      Password varchar(255),
-                      Email varchar(255),
-                      Usertype varchar(255)
+                      userId int AUTO_INCREMENT PRIMARY KEY,
+                      username varchar(255),
+                      password varchar(255),
+                      email varchar(255),
+                      userType varchar(255)
 );
 
-INSERT INTO User (Username, Password, Email, Usertype)
+INSERT INTO User (username, password, email, userType)
 VALUES
     ('Admin', 'adminpassword', 'admin@example.com', 'Admin'),
     ('Yan', 'yanpassword', 'Yan@example.com', 'Registered User');
 
-
-
 CREATE TABLE Address (
-                         AddressID int AUTO_INCREMENT PRIMARY KEY,
-                         UserID int,
-                         FullName varchar(255),
-                         Address varchar(255),
-                         City varchar(255),
-                         Country varchar(255),
-                         PostalCode varchar(255),
-                         Phone varchar(255),
-                         FOREIGN KEY (UserID) REFERENCES User(UserID)
+                         addressId int AUTO_INCREMENT PRIMARY KEY,
+                         userId int,
+                         fullName varchar(255),
+                         address varchar(255),
+                         city varchar(255),
+                         country varchar(255),
+                         postalCode varchar(255),
+                         phone varchar(255),
+                         FOREIGN KEY (userId) REFERENCES User(userId)
 );
 
 CREATE TABLE Category (
-                          CategoryID int AUTO_INCREMENT PRIMARY KEY,
-                          CategoryName varchar(255)
+                          categoryId int AUTO_INCREMENT PRIMARY KEY,
+                          categoryName varchar(255)
 );
 
 CREATE TABLE Product (
-                         ProductID int AUTO_INCREMENT PRIMARY KEY,
-                         ProductName varchar(255),
-                         ProductDesc text,
-                         Price decimal(10, 2),
-                         Stock int,
-                         CategoryID int,
-                         ImageURL varchar(255),
-                         FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID)
+                         productId int AUTO_INCREMENT PRIMARY KEY,
+                         productName varchar(255),
+                         productDesc text,
+                         price decimal(10, 2),
+                         stock int,
+                         categoryId int,
+                         imageURL varchar(255),
+                         FOREIGN KEY (categoryId) REFERENCES Category(categoryId)
 );
 
 CREATE TABLE `Order` (
-                         OrderID int AUTO_INCREMENT PRIMARY KEY,
-                         UserID int,
-                         OrderDate datetime,
-                         Status varchar(255),
-                         Total decimal(10, 2),
-                         FOREIGN KEY (UserID) REFERENCES User(UserID)
+                         orderId int AUTO_INCREMENT PRIMARY KEY,
+                         userId int,
+                         orderDate datetime,
+                         status varchar(255),
+                         total decimal(10, 2),
+                         FOREIGN KEY (userId) REFERENCES User(userId)
 );
 
 CREATE TABLE OrderDetails (
-                              OrderDetailID int AUTO_INCREMENT PRIMARY KEY,
-                              OrderID int,
-                              ProductID int,
-                              Quantity int,
-                              Price decimal(10, 2),
-                              FOREIGN KEY (OrderID) REFERENCES `Order`(OrderID),
-                              FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+                              orderDetailId int AUTO_INCREMENT PRIMARY KEY,
+                              orderId int,
+                              productId int,
+                              quantity int,
+                              price decimal(10, 2),
+                              FOREIGN KEY (orderId) REFERENCES `Order`(orderId),
+                              FOREIGN KEY (productId) REFERENCES Product(productId)
 );
