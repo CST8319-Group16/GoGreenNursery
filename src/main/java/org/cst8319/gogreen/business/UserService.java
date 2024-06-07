@@ -21,15 +21,15 @@ public class UserService {
             throw new IllegalArgumentException("Username already exists");
         }
 
-        String userType = "normal";
+        String userType = "registered user";
 
         User user = new User(username, password, email, userType);
         userDAO.addUser(user);
 
     }
 
-    public User login(String username, String password) throws SQLException {
-        User user = userDAO.getUserByUsername(username);
+    public User login(String email, String password) throws SQLException {
+        User user = userDAO.getUserByEmail(email);
         if(user == null) {
             throw new IllegalArgumentException("User does not exist");
         }

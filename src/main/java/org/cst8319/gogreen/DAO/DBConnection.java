@@ -15,7 +15,11 @@ public class DBConnection {
     private static final String DRIVER_CLASS = "com.mysql.cj.jdbc.Driver";
 
     static {
-        try (InputStream input = new FileInputStream(PROPERTIES_FILE)) {
+        try (InputStream input = DBConnection.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE)) {
+
+            if (input == null) {
+                throw new IOException("Cannot find configuration file " + PROPERTIES_FILE);
+            }
 
             properties.load(input);
 

@@ -18,8 +18,9 @@ CREATE TABLE User (
 
 INSERT INTO User (username, password, email, userType)
 VALUES
-    ('Admin', 'adminpassword', 'admin@example.com', 'Admin'),
-    ('Yan', 'yanpassword', 'Yan@example.com', 'Registered User');
+    ('admin', 'adminpassword', 'admin@example.com', 'admin'),
+    ('yan', 'yanpassword', 'Yan@example.com', 'registered user');
+
 
 CREATE TABLE Address (
                          addressId int AUTO_INCREMENT PRIMARY KEY,

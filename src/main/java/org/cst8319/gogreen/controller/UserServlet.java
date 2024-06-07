@@ -89,7 +89,19 @@ public class UserServlet extends HttpServlet {
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("currentUser", user);
-            response.sendRedirect("browseProducts.jsp");
+
+            String userType = user.getUserType();
+            switch (userType) {
+                case "admin":
+                    response.sendRedirect("adminPage.jsp");
+                    break;
+                case "registered user":
+                    response.sendRedirect("index.jsp");
+                    break;
+                default:
+                    response.sendRedirect("index.jsp");
+                    break;
+            }
         } else {
             response.sendRedirect("login.jsp");
         }

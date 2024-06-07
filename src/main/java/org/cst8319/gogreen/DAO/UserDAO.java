@@ -73,6 +73,28 @@ public class UserDAO {
         return null;
     }
 
+    public User getUserByEmail(String email) {
+        String sql = "SELECT * FROM User WHERE email = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new User(
+                        rs.getString("username"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("userType")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public String getUserType(int userId) {
         String sql = "SELECT userType FROM User WHERE userId = ?";
         try (Connection conn = DBConnection.getConnection();
