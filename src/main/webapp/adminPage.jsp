@@ -58,6 +58,7 @@
                     <td><img src="<%= product.getImageURL()%>" alt="some_text"></td>
                     <td>
                         <input hidden type="text" name="productId" value="<%= product.getProductId()%>">
+                        <input hidden type="text" class="col-6" name="imageURL" value="<%= product.getImageURL()%>">
                         <input type="submit" name="action" class="btn btn-outline-success btn-sm" value="Update">
                         <input type="submit" name="action" class="btn btn-outline-success btn-sm" value="Delete">
                         </form>
