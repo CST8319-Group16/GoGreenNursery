@@ -4,4 +4,43 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+  <display-name>Archetype Created Web Application</display-name>
+
+
+  <servlet>
+    <servlet-name>ItemsServlet</servlet-name>
+    <servlet-class>org.cst8319.gogreen.controller.ItemsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ItemsServlet</servlet-name>
+    <url-pattern>/Items</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>addItemServlet</servlet-name>
+    <servlet-class>org.cst8319.gogreen.controller.addItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addItemServlet</servlet-name>
+    <url-pattern>/addItem</url-pattern>
+  </servlet-mapping>
+
+  <!--  <servlet>-->
+  <!--    <servlet-name>deleteItemServlet</servlet-name>-->
+  <!--    <servlet-class>com.controller.deleteItemServlet</servlet-class>-->
+  <!--  </servlet>-->
+  <!--  <servlet-mapping>-->
+  <!--    <servlet-name>deleteItem</servlet-name>-->
+  <!--    <url-pattern>/deleteItemServlet</url-pattern>-->
+  <!--  </servlet-mapping>-->
+
+  <!--  <servlet>-->
+  <!--    <servlet-name>addOrderServlet</servlet-name>-->
+  <!--    <servlet-class>com.controller.ItemServlet.addOrderServlet</servlet-class>-->
+  <!--  </servlet>-->
+  <!--  <servlet-mapping>-->
+  <!--    <servlet-name>addOrder</servlet-name>-->
+  <!--    <url-pattern>/addOrderServlet</url-pattern>-->
+  <!--  </servlet-mapping>-->
 </web-app>

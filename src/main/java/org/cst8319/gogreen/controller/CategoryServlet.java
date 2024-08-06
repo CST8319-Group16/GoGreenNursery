@@ -29,13 +29,11 @@ public class CategoryServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
+
             List<Category> categories = categoryService.getAllCategories();
             req.setAttribute("categories", categories);
             req.getRequestDispatcher("/WEB-INF/jsp/categories.jsp").forward(req, resp);
-        } catch (SQLException e) {
-            throw new ServletException(e);
-        }
+
     }
 
     @Override
@@ -45,11 +43,9 @@ public class CategoryServlet extends HttpServlet {
         Category category = new Category();
         category.setCategoryName(categoryName);
 
-        try {
+
             categoryService.addCategory(category);
             resp.sendRedirect("categories");
-        } catch (SQLException e) {
-            throw new ServletException(e);
-        }
+
     }
 }

@@ -74,17 +74,33 @@ public class ProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try {
+
             //all category in store.
             List<Product> products = productService.getAllProducts();
             //all product in store.
             List<Category> categories = categoryService.getAllCategories();
             req.setAttribute("products", products);
             req.setAttribute("categories", categories);
-            req.getRequestDispatcher("/adminPage.jsp").forward(req, resp);
-        } catch (SQLException e) {
-            throw new ServletException(e);
+
+        HttpSession session = req.getSession();
+        User user= (User)session.getAttribute("currentUser");
+
+        String userType = user.getUserType();
+        switch (userType) {
+            case "admin":
+                //resp.sendRedirect("adminPage.jsp");
+                req.getRequestDispatcher("/adminPage.jsp").forward(req, resp);
+                break;
+            case "registered user":
+                req.getRequestDispatcher("/Product.jsp").forward(req, resp);
+                break;
+            default:
+                resp.sendRedirect("login.jsp");
+                break;
         }
+
+          //  req.getRequestDispatcher("/adminPage.jsp").forward(req, resp);
+
     }
 
     @Override

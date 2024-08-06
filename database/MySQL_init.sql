@@ -68,3 +68,21 @@ CREATE TABLE OrderDetails (
                               FOREIGN KEY (orderId) REFERENCES `Order`(orderId),
                               FOREIGN KEY (productId) REFERENCES Product(productId)
 );
+
+
+INSERT INTO Product (productName, productDesc, price, stock, categoryId, imageURL) VALUES
+('Aloe Vera', 'A low-maintenance succulent known for its medicinal properties.', 10.99, 100, 1, 'resources/image/aloe_vera.jpg'),
+('Spider Plant', 'A popular houseplant that is easy to care for and has air-purifying qualities.', 8.99, 150, 1, 'resources/image/spider_plant.jpg'),
+('Peace Lily', 'A beautiful plant that helps improve indoor air quality.', 12.99, 80, 1, 'resources/image/peace_lily.jpg'),
+('Snake Plant', 'A hardy plant known for its ability to thrive in low light conditions.', 15.99, 120, 1, 'resources/image/snake_plant.jpg'),
+('Fern', 'A lush, green plant that adds a touch of nature to any space.', 9.99, 200, 1, 'resources/image/fern.jpg'),
+('Succulent', 'A small, drought-tolerant plant perfect for indoor settings.', 5.99, 300, 1, 'resources/image/succulent.jpg'),
+('Orchid', 'An elegant plant with beautiful blooms, perfect for decoration.', 18.99, 60, 1, 'resources/image/orchid.jpg'),
+('Cactus', 'A low-maintenance plant that thrives in dry environments.', 7.99, 250, 1, 'resources/image/cactus.jpg'),
+('Bamboo', 'A fast-growing plant that brings a touch of the tropics indoors.', 14.99, 90, 1, 'resources/image/bamboo.jpg'),
+('Fiddle Leaf Fig', 'A trendy plant known for its large, glossy leaves.', 20.99, 70, 1, 'resources/image/fiddle_leaf_fig.jpg'),
+('Monstera', 'A popular plant with distinctive split leaves.', 22.99, 80, 1, 'resources/image/monstera.jpg'),
+('Pothos', 'An easy-care plant with trailing vines.', 11.99, 130, 1, 'resources/image/pothos.jpg'),
+('ZZ Plant', 'A hardy plant that requires very little maintenance.', 13.99, 100, 1, 'resources/image/zz_plant.jpg'),
+('Rubber Plant', 'A striking plant with large, shiny leaves.', 16.99, 110, 1, 'resources/image/rubber_plant.jpg'),
+('Jade Plant', 'A symbol of good luck, this plant is easy to grow.', 8.99, 140, 1, 'resources/image/jade_plant.jpg');

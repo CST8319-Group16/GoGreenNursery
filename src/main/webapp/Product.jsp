@@ -7,13 +7,13 @@
     String info = (String) request.getAttribute("info");
 %>
 
-<% request.setAttribute("headerTitle", "Admin Page - GoGreen"); %>
+<% request.setAttribute("headerTitle", "Plants page - GoGreen"); %>
 <%@ include file="resources/includes/header.jsp" %>
 <main class="flex-1 bg-cover bg-center" style="background-image: url('resources/image/background.png');">
 
     <div class="flex flex-col px-8 py-12">
         <%--title--%>
-        <h2 class="mt-10 mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Admin Page</h2>
+        <h2 class="mt-10 mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Plants</h2>
     </div>
 
     <div id="main-content" >
@@ -25,9 +25,10 @@
                     <th class="col-1">Name</th>
                     <th class="col-1">Description</th>
                     <th class="col-1">Price</th>
-                    <th class="col-1">Quantities</th>
+                    <th class="col-1">In Store</th>
                     <th class="col-1">Category</th>
                     <th class="col-1">Image URL</th>
+                    <th class="col-1">Quantities</th>
                     <th class="col-2">Action</th>
                 </tr>
                 </thead>
@@ -56,38 +57,14 @@
                         </td>
                     <!--<td><input type="text" class="col-6" name="imageURL" value="<%= product.getImageURL()%>"></td> -->
                     <td><img src="<%= product.getImageURL()%>" alt="some_text"></td>
+                    <td><input type="text" class="col-6" name="quantities" value="0"></td>
                     <td>
                         <input hidden type="text" name="productId" value="<%= product.getProductId()%>">
-                        <input type="submit" name="action" class="btn btn-outline-success btn-sm" value="Update">
-                        <input type="submit" name="action" class="btn btn-outline-success btn-sm" value="Delete">
+                        <input type="submit" name="action" class="btn btn-outline-success btn-sm" value="Buy">
                         </form>
                     </td>
                 </tr>
                 <% }%>
-                <%--empty row for add--%>
-                <tr>
-
-                        <form action="Product" method="post">
-                            <td> </td>
-                    <td><input type="text" class="col-12" name="productName" value=""></td>
-                    <td><input type="text" class="col-6" name="productDesc" value=""></td>
-                    <td><input type="text" class="col-6" name="price" value=""></td>
-                    <td><input type="text" class="col-6" name="stock" value=""></td>
-                            <td>
-                    <select name="categoryId" class="col-md-2" id="categoryId" >
-                        <% List<Category> categories = (List<Category>) request.getAttribute("categories");
-                            for (Category category : categories) { %>
-                        <option value="<%= category.getCategoryId()%>" ><%= category.getCategoryName()%></option>
-                        <% } %>
-                    </select>
-                            </td>
-                    <td><input type="text" class="col-6" name="imageURL" value=""></td>
-                    <td>
-                        <input hidden type="text" name="productId" value="-1">
-                        <input type="submit" name="action" class="btn btn-outline-success btn-sm" id="showToastBtn" value="Add">
-                        </form>
-                    </td>
-                </tr>
                 </tbody>
                 <hr>
 

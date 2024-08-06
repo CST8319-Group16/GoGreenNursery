@@ -44,6 +44,12 @@
             <a href="login.jsp"
                class="<%= u == null ? "" : "hidden" %> text-white hover:bg-teal-900 rounded-md px-3 py-2 font-medium">Login</a>
 
+            <%--Product--%>
+            <form action="Product" method="get" class="m-0 <%= u != null ? "" : "hidden" %>">
+
+                <input type="submit" value="Product"
+                       class="text-white hover:bg-blue-800 rounded-md px-3 py-2 font-medium">
+            </form>
             <%--logout--%>
             <form action="UserServlet" method="post" class="m-0 <%= u != null ? "" : "hidden" %>">
                 <input type="hidden" name="action" value="logout">

@@ -93,10 +93,11 @@ public class UserServlet extends HttpServlet {
             String userType = user.getUserType();
             switch (userType) {
                 case "admin":
-                    response.sendRedirect("adminPage.jsp");
+                   // response.sendRedirect("adminPage.jsp");
+                    response.sendRedirect("Product");
                     break;
                 case "registered user":
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect("Product");
                     break;
                 default:
                     response.sendRedirect("index.jsp");

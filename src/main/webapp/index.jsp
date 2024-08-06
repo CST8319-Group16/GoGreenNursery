@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String error = (String) request.getAttribute("error");
@@ -16,3 +17,4 @@
 </main>
 
 <%@ include file="resources/includes/footer.jsp" %>
+
