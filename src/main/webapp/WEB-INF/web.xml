@@ -7,13 +7,6 @@
   <display-name>Archetype Created Web Application</display-name>
 
 
-  <servlet>
-    <servlet-name>ItemsServlet</servlet-name>
-    <servlet-class>org.cst8319.gogreen.controller.ItemServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ItemsServlet</servlet-name>
-    <url-pattern>/Items</url-pattern>
-  </servlet-mapping>
+
 
 </web-app>
