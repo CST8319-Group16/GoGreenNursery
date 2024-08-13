@@ -1,39 +1,106 @@
 package org.cst8319.gogreen.DAO;
 
 import org.cst8319.gogreen.DTO.Order;
-import org.cst8319.gogreen.util.dbUtil;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
 
 
 public class OrderDAO {
-    private JdbcTemplate template = new JdbcTemplate(dbUtil.getDataSource());
+    private Connection connection;
+
+    public OrderDAO() {
+        try {
+            this.connection = DBConnection.getConnection();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
 
     public void insertOrder(Order order) {
-        String sql = "insert into orders (userId, plantId, plantName, price, totalPrice, orderTime, orderStatus) values (?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, order.getUserId(), order.getPlantId(), order.getPlantName(), order.getPrice(), order.getTotalPrice(), order.getOrderTime(), order.getOrderStatus());
+        String sql = "INSERT INTO `Order` (userId, orderStatus) (?, ?)";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, order.getUserId());
+            stmt.setInt(2, order.getOrderStatus());
+            stmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
 
-    public Order findLastOrder() {
 
-        String sql = "select * from orders order by orderId DESC limit 1";
-        return template.queryForObject(sql, new BeanPropertyRowMapper<>(Order.class));
+
+    public List<Order> getAllOrders() {
+        List<Order> products = new ArrayList<>();
+        String sql = "SELECT * FROM `Order`";
+        try (Statement stmt = connection.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Order order = new Order();
+                order.setOrderId(rs.getInt("orderId"));
+                order.setOrderStatus(rs.getInt("OrderStatus"));
+                products.add(order);
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return products;
     }
 
-    public void updateStatusById(int orderId, int newStatus) {
 
-        String sql = "UPDATE orders SET orderStatus = ? WHERE orderId = ?";
-        template.update(sql, newStatus, orderId);
+
+    public Order getOrderById(int orderId){
+        Order order = null;
+        String sql = "SELECT * FROM `Order` WHERE orderId = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, orderId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    order = new Order();
+                    order.setUserId(rs.getInt("userId"));
+                    order.setOrderStatus(rs.getInt("orderStatus"));
+                }
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        return order;
     }
 
-    public List<Order> findOrderById(int orderId) {
 
-        String sql = "select * from orders where orderId = ?";
-        return template.query(sql, new BeanPropertyRowMapper<Order>(Order.class), orderId);
+    public void updateOrder(Order order){
+        String sql = "UPDATE `Order` SET userId = ?, orderStatus = ? WHERE orderId = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, order.getUserId());
+            stmt.setInt(2, order.getOrderStatus());
+            stmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
+
+    public void deleteOrder(int orderId){
+        String sql = "DELETE FROM `Order` WHERE orderId = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, orderId );
+            stmt.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }

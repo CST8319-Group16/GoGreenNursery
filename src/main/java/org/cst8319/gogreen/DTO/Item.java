@@ -1,24 +1,15 @@
 package org.cst8319.gogreen.DTO;
 
+import java.math.BigDecimal;
+
 public class Item {
     private int itemId;
-    private int userId;
-    private int plantId;
-    private String plantName;
+    private int orderId;
+    private int productId;
     private int quantity;
-    private double price;
-    private double totalPrice;
+    private BigDecimal price;
+    private BigDecimal totalPrice;
 
-
-    public Item(int plantId, String plantName, double price, int quantity, double totalPrice) {
-        this.plantId = plantId;
-        this.plantName = plantName;
-        this.price = price;
-        this.quantity = quantity;
-        this.totalPrice = totalPrice;
-    }
-
-    // Getters and setters
     public int getItemId() {
         return itemId;
     }
@@ -27,28 +18,20 @@ public class Item {
         this.itemId = itemId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    public int getPlantId() {
-        return plantId;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setPlantId(int plantId) {
-        this.plantId = plantId;
-    }
-
-    public String getPlantName() {
-        return plantName;
-    }
-
-    public void setPlantName(String plantName) {
-        this.plantName = plantName;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public int getQuantity() {
@@ -59,19 +42,21 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 }
+
+
