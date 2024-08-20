@@ -6,22 +6,42 @@ import org.cst8319.gogreen.DTO.Item;
 import java.util.List;
 
 public class ItemService {
-    ItemDAO dao = new ItemDAO();
 
-    public void addIntoItem(int userId, int plantId, String plantName, int quantity, double price) {
-        int itemId = dao.confirmItem(userId, plantId);
-        if (itemId == 0) {
-            dao.insertItem(userId, plantId, plantName, quantity, price);
-        } else {
-            dao.updateItem(itemId, quantity, price);
-        }
+    private ItemDAO itemDAO;
+
+    public ItemService() {
+        this.itemDAO = new ItemDAO();
     }
 
-    public List<Item> findItemByUserId(int userId) {
-        return dao.findItemByUserId(userId);
+    public void createItem(Item item) {
+        itemDAO.saveItem(item);
+    }
+
+    public Item getItemById(int itemId) {
+        return itemDAO.getItemById(itemId);
+    }
+
+    public List<Item> getAllItems() {
+        return itemDAO.getAllItems();
+    }
+
+    public void updateItem(Item item) {
+        itemDAO.updateItem(item);
     }
 
     public void deleteItem(int itemId) {
-        dao.deleteItem(itemId);
+        itemDAO.deleteItemById(itemId);
+    }
+
+    public List<Item> findByOrderId(int orderId) {
+        return itemDAO.findByOrderId(orderId);
+    }
+
+    public List<Item> findByOrderStatusAndUserId(int orderStatus, int userId){
+        return itemDAO.findByOrderStatusAndUserId(orderStatus, userId);
+    }
+
+    public void deleteItemByOrderId(int orderId) {
+        itemDAO.deleteItemByOrderId(orderId);
     }
 }

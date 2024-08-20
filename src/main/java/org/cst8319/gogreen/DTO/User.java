@@ -16,6 +16,14 @@ public class User{
         this.userType = userType;
     }
 
+    public User(int userId, String username, String password, String email, String userType) {
+        this.userId = userId;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.userType = userType;
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -56,4 +64,14 @@ public class User{
         this.userType = userType;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", userType='" + userType + '\'' +
+                '}';
+    }
 }

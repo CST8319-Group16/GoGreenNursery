@@ -39,6 +39,7 @@ public class UserDAO {
 
             if (rs.next()) {
                 return new User(
+                        rs.getInt("userId"),
                         rs.getString("username"),
                         rs.getString("password"),
                         rs.getString("email"),
@@ -61,6 +62,7 @@ public class UserDAO {
 
             if (rs.next()) {
                 return new User(
+                        rs.getInt("userId"),
                         rs.getString("username"),
                         rs.getString("password"),
                         rs.getString("email"),
@@ -83,6 +85,7 @@ public class UserDAO {
 
             if (rs.next()) {
                 return new User(
+                        rs.getInt("userId"),
                         rs.getString("username"),
                         rs.getString("password"),
                         rs.getString("email"),

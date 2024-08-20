@@ -21,12 +21,12 @@
     </thead>
     <tbody>
         <tr>
-            <td>${order.orderId}</td>
-            <td>${order.userId}</td>
-            <td>${order.plantId}</td>
-            <td>${order.totalPrice}</td>
-            <td>${order.orderTime}</td>
-            <td>${order.orderStatus}</td>
+            <td>${userOrder.orderId}</td>
+            <td>${userOrder.userId}</td>
+            <td>${userOrder.plantId}</td>
+            <td>${userOrder.totalPrice}</td>
+            <td>${userOrder.orderTime}</td>
+            <td>${userOrder.orderStatus}</td>
         </tr>
     </tbody>
 </table>

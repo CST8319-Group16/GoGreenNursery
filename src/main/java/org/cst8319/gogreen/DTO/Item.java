@@ -1,24 +1,30 @@
 package org.cst8319.gogreen.DTO;
 
+import java.math.BigDecimal;
+
 public class Item {
     private int itemId;
     private int userId;
-    private int plantId;
-    private String plantName;
+    private int productId;
+    private Integer orderId; // allow null
     private int quantity;
-    private double price;
-    private double totalPrice;
+    private BigDecimal price;
+    private BigDecimal itemTotalPrice;
+    private int orderStatus;
 
+    public Item(){}
 
-    public Item(int plantId, String plantName, double price, int quantity, double totalPrice) {
-        this.plantId = plantId;
-        this.plantName = plantName;
-        this.price = price;
+    public Item(int itemId, int userId, int productId, Integer orderId, int quantity, BigDecimal price, BigDecimal itemTotalPrice, int orderStatus) {
+        this.itemId = itemId;
+        this.userId = userId;
+        this.productId = productId;
+        this.orderId = orderId;
         this.quantity = quantity;
-        this.totalPrice = totalPrice;
+        this.price = price;
+        this.itemTotalPrice = itemTotalPrice;
+        this.orderStatus = orderStatus;
     }
 
-    // Getters and setters
     public int getItemId() {
         return itemId;
     }
@@ -35,20 +41,20 @@ public class Item {
         this.userId = userId;
     }
 
-    public int getPlantId() {
-        return plantId;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setPlantId(int plantId) {
-        this.plantId = plantId;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public String getPlantName() {
-        return plantName;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setPlantName(String plantName) {
-        this.plantName = plantName;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public int getQuantity() {
@@ -59,19 +65,41 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public BigDecimal getItemTotalPrice() {
+        return itemTotalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setItemTotalPrice(BigDecimal itemTotalPrice) {
+        this.itemTotalPrice = itemTotalPrice;
+    }
+
+    public int getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(int orderStatus) {
+        this.orderStatus = orderStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "itemId=" + itemId +
+                ", userId=" + userId +
+                ", productId=" + productId +
+                ", orderId=" + orderId +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", itemTotalPrice=" + itemTotalPrice +
+                ", orderStatus=" + orderStatus +
+                '}';
     }
 }

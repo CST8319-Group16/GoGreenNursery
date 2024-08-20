@@ -85,6 +85,9 @@ public class ProductServlet extends HttpServlet {
         HttpSession session = req.getSession();
         User user= (User)session.getAttribute("currentUser");
 
+        System.out.println("ProductServlet " + user.toString());
+
+
         String userType = user.getUserType();
         switch (userType) {
             case "admin":
